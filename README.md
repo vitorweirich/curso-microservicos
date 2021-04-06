@@ -1,1 +1,1 @@
-# curso-microservicos
+# microservice-course
