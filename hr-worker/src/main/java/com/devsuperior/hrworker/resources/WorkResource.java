@@ -3,6 +3,7 @@ package com.devsuperior.hrworker.resources;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,8 +17,16 @@ import com.devsuperior.hrworker.repositories.WorkerRepository;
 @RequestMapping(value = "/workers")
 public class WorkResource {
 	
+	@Value("${test.config}")
+	private String testConfig;
+	
 	@Autowired
 	private WorkerRepository repository;
+	
+	@GetMapping("/config")
+	public String getConfig() {
+		return testConfig;
+	}
 	
 	@GetMapping
 	public ResponseEntity<List<Worker>> findAll() {
